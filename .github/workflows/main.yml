@@ -10,7 +10,6 @@ jobs:
       matrix:
         include:
           - platform: macos-latest
-            args: ""
 
     runs-on: ${{ matrix.platform }}
 
@@ -20,7 +19,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
@@ -32,5 +31,3 @@ jobs:
         uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: ${{ matrix.args }}
