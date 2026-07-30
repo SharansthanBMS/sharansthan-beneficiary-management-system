@@ -1,0 +1,18 @@
+--- web/src/PdfGenerator.ts
++++ web/src/PdfGenerator.ts
+@@ -1,4 +1,5 @@
+ import jsPDF from 'jspdf';
++import { getDirectDriveUrl } from './utils/imageUtils';
+ 
+ const getBase64ImageFromURL = (url: string): Promise<string> => {
+     return new Promise((resolve, reject) => {
+@@ -170,7 +171,8 @@
+                 try {
+                     let base64 = p.url;
+                     if (!base64.startsWith("data:image")) {
+-                        base64 = await getBase64ImageFromURL(p.url);
++                        const proxiedUrl = getDirectDriveUrl(p.url) || p.url;
++                        base64 = await getBase64ImageFromURL(proxiedUrl);
+                     }
+                     doc.addImage(base64, "JPEG", xOffset, y, 35, 35);
+                     doc.setFontSize(8);

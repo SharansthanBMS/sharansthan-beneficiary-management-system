@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <img src="https://script.google.com/macros/s/AKfycbx9UXCGv-zD8RtLv1wDIo9PB6Gk_bUo36vh2FQPwAEW-O9osNd6xaxTduUMqUo2vCsD/exec?action=getImage&fileId=1BtVdPmBB4oewvv7Mg53oDP58-HHzTIni" id="img1">
+  <img src="https://script.google.com/macros/s/AKfycbx9UXCGv-zD8RtLv1wDIo9PB6Gk_bUo36vh2FQPwAEW-O9osNd6xaxTduUMqUo2vCsD/exec?id=1BtVdPmBB4oewvv7Mg53oDP58-HHzTIni" id="img2">
+  <img src="https://script.google.com/macros/s/AKfycbx9UXCGv-zD8RtLv1wDIo9PB6Gk_bUo36vh2FQPwAEW-O9osNd6xaxTduUMqUo2vCsD/exec?action=viewImage&id=1BtVdPmBB4oewvv7Mg53oDP58-HHzTIni" id="img3">
+  <img src="https://script.google.com/macros/s/AKfycbx9UXCGv-zD8RtLv1wDIo9PB6Gk_bUo36vh2FQPwAEW-O9osNd6xaxTduUMqUo2vCsD/exec?fileId=1BtVdPmBB4oewvv7Mg53oDP58-HHzTIni" id="img4">
+  <script>
+    ['img1', 'img2', 'img3', 'img4'].forEach(id => {
+      document.getElementById(id).onerror = () => console.log(id + ' ERROR');
+      document.getElementById(id).onload = () => console.log(id + ' LOADED');
+    });
+  </script>
+</body>
+</html>
