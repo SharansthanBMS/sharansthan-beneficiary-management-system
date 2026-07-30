@@ -13,6 +13,7 @@ jobs:
       matrix:
         include:
           - platform: macos-latest
+            args: "--target aarch64-apple-darwin"
 
     runs-on: ${{ matrix.platform }}
 
@@ -32,14 +33,10 @@ jobs:
         run: npm install
 
       - name: Build Tauri App
-        uses: tauri-apps/tauri-action@v0
+        uses: tauri-apps/tauri-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          includeDebug: false
-
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: tauri-macos
-          path: src-tauri/target/release/bundle/**
+          args: ${{ matrix.args }}
+          uploadWorkflowArtifacts: true
+          workflowArtifactNamePattern: "macOS-[bundle]"
